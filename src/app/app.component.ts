@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CardData } from './app.types';
+import { CardAnulada, CardData } from './app.types';
 import { AppService } from './app.service';
 import * as Highcharts from 'highcharts';
 
@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'dashboard-lady-lee';
 
   cards:CardData[] = [];
+  cardsAnulada:CardAnulada[] = [];
 
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions:any = {
@@ -38,5 +39,7 @@ export class AppComponent {
     .map(x=>{
       this.chartOptions.series[0].data.push([x.seller, x.totalSales])
     })
+
+    this.cardsAnulada = this.appService.getCancelledInvoicePercentageByStore();
   }
 }

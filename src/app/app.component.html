@@ -10,8 +10,6 @@
 
 
   <section class="card-container" >
-
-
     <ng-container *ngFor="let item of cards" >
       <div  class="card" >
         <div class="card-text" >
@@ -19,7 +17,25 @@
             {{item.store}}
           </p>
           <p class="card-value" >
-            {{item.totalSales | number: '1.2-2' }}
+            {{'L. '+(item.totalSales | number: '1.2-2') }}
+          </p>
+        </div>
+      </div>
+     </ng-container>
+  </section>
+
+  <h3  style="padding-inline: 1rem; margin-top: 1rem; margin-bottom: 0.5rem;" > Porcentaje de facturas anuladas por tienda</h3>
+
+
+  <section class="card-container" >
+    <ng-container *ngFor="let item of cardsAnulada" >
+      <div  class="card" >
+        <div class="card-text" >
+          <p class="card-title" >
+            {{item.store}}
+          </p>
+          <p class="card-value" >
+            {{(item.cancelledPercentage | number: '1.2-2')  + '%'}}
           </p>
         </div>
       </div>

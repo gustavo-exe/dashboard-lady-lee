@@ -52,4 +52,28 @@ export class AppService {
       .slice(0, 10);
 
   }
+
+  getCancelledInvoicePercentageByStore() {
+    const storeStats = data.reduce((acc, invoice) => {
+      const store = invoice.store;
+      const isCancelled = invoice.invoiceStatus === 'Anulada';
+
+      if (!acc[store]) {
+        acc[store] = { total: 0, cancelled: 0 };
+      }
+
+      acc[store].total += 1;
+      if (isCancelled) {
+        acc[store].cancelled += 1;
+      }
+
+      return acc;
+    }, {} as { [store: string]: { total: number, cancelled: number } });
+
+    return Object.keys(storeStats).map(store => ({
+      store,
+      cancelledPercentage: ((storeStats[store].cancelled / storeStats[store].total) * 100)
+    }));
+  }
+
 }
