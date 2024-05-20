@@ -65,3 +65,15 @@ h2{
   margin-inline: 1rem;
   border-bottom: solid 1px gainsboro;
 }
+
+.chip,.chip-focus{
+  padding: 8px 1rem 8px 1rem;
+  background-color: white;
+  border-radius: 999px;
+  border: solid 1px gainsboro;
+  cursor: pointer;
+}
+
+.chip-focus{
+  background-color: lightblue;
+}

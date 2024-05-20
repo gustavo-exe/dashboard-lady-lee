@@ -36,6 +36,9 @@ export class AppComponent implements AfterViewInit {
   displayedColumns: string[] = ['uid', 'invoiceDate', 'clientName', 'store', 'invoiceTotal'];
   dataSource = new MatTableDataSource(data);
 
+  storeName = ['LL Alameda','LL Mega mall', 'LL Lima', 'LL Satelite' , 'LL Cascadas', 'LL Rotan' , 'LL El progreso', 'LL Citymall']
+  slectedStore:string = '';
+
   constructor(
     private appService:AppService
   ){
@@ -51,5 +54,10 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
       this.dataSource.paginator = this.paginator;
+  }
+
+  dataSourceFilterByStore(value:string){
+    this.slectedStore = value;
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 }

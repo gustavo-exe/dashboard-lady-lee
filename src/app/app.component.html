@@ -1,7 +1,7 @@
 <div class="container">
   <div class="title">
 
-    <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+    <svg width="24px" style="margin-bottom: 1rem;" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
       xmlns="http://www.w3.org/2000/svg" color="#000000">
       <path d="M20 20H4V4" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
       <path d="M4 16.5L12 9L15 12L19.5 7.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
@@ -58,6 +58,12 @@
   <section style="margin-top: 2rem;" >
     <h2 style="padding-inline: 1rem; margin-top: 1rem; margin-bottom: 0.5rem;">Facturas</h2>
 
+    <p style="padding-inline: 1rem; margin-top: 12px;" >Filtrar por tienda:</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-inline: 1rem;" >
+      <ng-container *ngFor="let item of storeName">
+        <p (click)="dataSourceFilterByStore(item)" [ngClass]="{'chip': item !== slectedStore, 'chip-focus': item === slectedStore}" > {{item}} </p>
+      </ng-container>
+    </div>
 
     <section class="table-container" >
       <table mat-table [dataSource]="dataSource">
