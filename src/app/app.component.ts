@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CardAnulada, CardData } from './app.types';
 import { AppService } from './app.service';
 import * as Highcharts from 'highcharts';
+import { data } from './data';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'dashboard-lady-lee';
+export class AppComponent implements AfterViewInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   cards:CardData[] = [];
   cardsAnulada:CardAnulada[] = [];
@@ -30,6 +33,9 @@ export class AppComponent {
     }]
   };
 
+  displayedColumns: string[] = ['uid', 'invoiceDate', 'clientName', 'store', 'invoiceTotal'];
+  dataSource = new MatTableDataSource(data);
+
   constructor(
     private appService:AppService
   ){
@@ -41,5 +47,9 @@ export class AppComponent {
     })
 
     this.cardsAnulada = this.appService.getCancelledInvoicePercentageByStore();
+  }
+
+  ngAfterViewInit(): void {
+      this.dataSource.paginator = this.paginator;
   }
 }

@@ -25,6 +25,8 @@
 .highcharts-container{
   border-radius: 8px;
   margin-inline: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   overflow: hidden;
   border: 1px solid gainsboro;
 }
@@ -48,4 +50,18 @@
       color: #515156;
     }
   }
+}
+
+.table-container{
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  margin: 1rem;
+  overflow: hidden;
+}
+
+h2{
+  padding-inline: 0px;
+  margin-inline: 1rem;
+  border-bottom: solid 1px gainsboro;
 }
