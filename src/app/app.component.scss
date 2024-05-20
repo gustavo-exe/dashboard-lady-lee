@@ -1,0 +1,51 @@
+.container{
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+  padding-top: 1rem;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.card-container{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.highcharts-container{
+  border-radius: 8px;
+  margin-inline: 1rem;
+  overflow: hidden;
+  border: 1px solid gainsboro;
+}
+
+
+.card{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  padding: 8px;
+  .card-text{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    .card-title{
+      text-wrap: nowrap;
+      font-size: 18px;
+      color: #515156;
+    }
+  }
+}
